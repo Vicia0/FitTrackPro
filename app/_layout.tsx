@@ -1,59 +1,32 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+import React from 'react';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/components/useColorScheme';
-
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Stack>
+      {/*
+        This Stack navigator controls the entire app. Each "Screen" is a top-level
+        navigation item.
+      */}
+
+      {/* Screen 1: The Welcome Page (app/index.tsx) */}
+      {/* It's a full-screen page with no header. */}
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+
+      {/* Screen 2: The Login Page (app/login.tsx) */}
+      {/* It's also a full-screen page with no header. */}
+      <Stack.Screen name="login" options={{ headerShown: false }} />
+
+      {/* Screen 3: The Sign Up Page (app/signup.tsx) */}
+      {/* Also a full-screen page with no header. */}
+      <Stack.Screen name="signup" options={{ headerShown: false }} />
+
+      {/* Screen 4: The Main App with Tabs */}
+      {/* This special screen points to the entire "(tabs)" directory. */}
+      {/* The layout file inside "(tabs)" will take over from here and add the bottom tab bar. */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="find-friends" options={{ headerShown: false }} />
+      <Stack.Screen name="workout-detail/[id]" options={{ headerShown: false }} />
+    </Stack>
   );
 }
