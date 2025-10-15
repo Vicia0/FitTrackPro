@@ -58,17 +58,18 @@ const SignupScreen = () => {
             <View style={styles.card}>
               <Text style={styles.title}>Create Your Profile</Text>
               {/* Form Inputs */}
-              <TextInput style={styles.input} placeholder="Full Name" value={name} onChangeText={setName} />
-              <TextInput style={styles.input} placeholder="Age" value={age} onChangeText={setAge} keyboardType="numeric" />
+              <TextInput style={styles.input} placeholderTextColor="#9CA3AF" placeholder="Full Name" value={name} onChangeText={setName} />
+              <TextInput style={styles.input} placeholderTextColor="#9CA3AF" placeholder="Age" value={age} onChangeText={setAge} keyboardType="numeric" />
               <View style={styles.row}>
-                <TextInput style={[styles.input, styles.halfInput]} placeholder="Weight (kg)" value={weight} onChangeText={setWeight} keyboardType="numeric" />
-                <TextInput style={[styles.input, styles.halfInput]} placeholder="Height (cm)" value={height} onChangeText={setHeight} keyboardType="numeric" />
+                <TextInput style={[styles.input, styles.halfInput]} placeholderTextColor="#9CA3AF" placeholder="Weight (kg)" value={weight} onChangeText={setWeight} keyboardType="numeric" />
+                <TextInput style={[styles.input, styles.halfInput]} placeholderTextColor="#9CA3AF" placeholder="Height (cm)" value={height} onChangeText={setHeight} keyboardType="numeric" />
               </View>
-              <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+              <TextInput style={styles.input} placeholderTextColor="#9CA3AF" placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
               
               {/* Step 3: Create the password input with the eye icon */}
               <View style={styles.passwordContainer}>
                 <TextInput
+                  placeholderTextColor="#9CA3AF"
                   style={styles.passwordInput}
                   placeholder="Password"
                   value={password}

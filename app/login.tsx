@@ -63,9 +63,10 @@ const LoginScreen = () => {
           <View style={{ flex: 1 }} />
           <View style={styles.card}>
             <Text style={styles.title}>Welcome Back</Text>
-            <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+            <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#9CA3AF" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
             <View style={styles.passwordContainer}>
               <TextInput
+                placeholderTextColor="#9CA3AF"
                 style={styles.passwordInput}
                 placeholder="Password"
                 value={password}
